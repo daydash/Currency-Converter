@@ -76,7 +76,10 @@ form.addEventListener("submit", (e) => {
 	outputText.value = outputValue;
 });
 
-// swapButton.addEventListener("click", () => {
-// 	outputCurrency.value = inputCurrency.value;
-// 	outputCurrency.innerText = inputCurrency.innerText;
-// });
+swapButton.addEventListener("click", () => {
+	const temp = outputCurrency.value;
+	outputCurrency.value = inputCurrency.value;
+	inputCurrency.value = temp;
+});
+
+
