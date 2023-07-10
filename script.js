@@ -64,10 +64,10 @@ const getData = async () => {
     });
   }
 
-  setInputFilter(inputText, function (value) {
+  setInputFilter(inputText, (value) => {
     return /^\d*\.?\d*$/.test(value);
   });
-  setInputFilter(outputText, function (value) {
+  setInputFilter(outputText, (value) => {
     return /^\d*\.?\d*$/.test(value);
   });
 
