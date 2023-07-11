@@ -112,3 +112,24 @@ body {
   transform: scale(1.08);
   transition: all 0.1s ease-in-out;
 }
+
+.sameCurrencyErrorBtn {
+  border: 2px solid red;
+  color: #000000;
+  background-color: var(--light-color);
+}
+.sameCurrencyErrorBtn:hover {
+  border: 2px solid red;
+  color: #000000;
+}
+
+.redBorder {
+  border: 2px solid red;
+}
+
+input:focus {
+  outline: none;
+}
+select:focus {
+  outline: none;
+}

@@ -26,14 +26,20 @@
           <i class="fa-solid fa-right-left"></i>
         </button>
         <div class="main">
-          <input type="text" name="output" id="outputText" class="selectText" />
+          <input
+            type="text"
+            name="output"
+            id="outputText"
+            class="selectText"
+            disabled
+          />
           <select
             name="outputCurrency"
             id="outputCurrency"
             class="selectCurrency"
           ></select>
         </div>
-        <button type="submit" class="btn">CONVERT</button>
+        <button type="submit" class="btn" id="convertBtn">CONVERT</button>
       </form>
     </div>
     <script type="module" src="./script.js"></script>
