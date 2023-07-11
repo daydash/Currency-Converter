@@ -133,3 +133,14 @@ input:focus {
 select:focus {
   outline: none;
 }
+
+.warning {
+  margin: 10px;
+  padding: 0;
+  color: yellow;
+  display: inline;
+}
+
+p {
+  display: none;
+}

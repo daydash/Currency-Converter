@@ -7,6 +7,8 @@ const outputText = document.getElementById("outputText");
 const form = document.querySelector(".form");
 const swapButton = document.getElementById("swapButton");
 const convertBtn = document.getElementById("convertBtn");
+const inputValueError = document.getElementById("inputValueError");
+const inputCurrencyError = document.getElementById("inputCurrencyError");
 
 const getData = async () => {
   // const response = await fetch(
@@ -40,6 +42,7 @@ const getData = async () => {
     outputCurrency.appendChild(optionsList);
   });
 
+  console.log("test");
   // Restricts input for the given textbox to the given inputFilter.
   function setInputFilter(textbox, inputFilter) {
     [
@@ -66,24 +69,27 @@ const getData = async () => {
   }
 
   setInputFilter(inputText, (value) => {
+    console.log("I am");
     return /^\d*\.?\d*$/.test(value);
   });
-  // setInputFilter(outputText, (value) => {
-  //   return /^\d*\.?\d*$/.test(value);
-  // });
+
+  console.log(setInputFilter);
 
   inputText.addEventListener("input", () => {
     inputText.classList.remove("redBorder");
+    inputValueError.classList.remove("warning");
   });
 
   inputCurrency.addEventListener("input", () => {
     inputCurrency.classList.remove("redBorder");
     outputCurrency.classList.remove("redBorder");
+    inputCurrencyError.classList.remove("warning");
   });
 
   outputCurrency.addEventListener("input", () => {
     inputCurrency.classList.remove("redBorder");
     outputCurrency.classList.remove("redBorder");
+    inputCurrencyError.classList.remove("warning");
   });
 
   form.addEventListener("submit", (e) => {
@@ -94,10 +100,13 @@ const getData = async () => {
 
     if (inputValue.trim() !== "") {
       inputText.classList.remove("redBorder");
+      inputValueError.classList.remove("warning");
+
       if (inputOption !== outputOption) {
         outputCurrency.classList.remove("redBorder");
         inputCurrency.classList.remove("redBorder");
         convertBtn.classList.remove("sameCurrencyErrorBtn");
+        inputCurrencyError.classList.remove("warning");
 
         const outputValue =
           (inputValue * currencyData[outputOption]) / currencyData[inputOption];
@@ -109,6 +118,7 @@ const getData = async () => {
         outputCurrency.focus();
         inputCurrency.classList.add("redBorder");
         inputCurrency.focus();
+        inputCurrencyError.classList.add("warning");
       }
     } else {
       convertBtn.classList.add("sameCurrencyErrorBtn");
@@ -117,29 +127,30 @@ const getData = async () => {
       }, 1500);
       inputText.classList.add("redBorder");
       inputText.focus();
+      inputValueError.classList.add("warning");
     }
   });
 
   swapButton.addEventListener("click", () => {
-    const inputValue = inputText.value;
-    const outputValue = inputText.value;
+    const outputValue = outputText.value;
     const inputOption = inputCurrency.value;
     const outputOption = outputCurrency.value;
 
-    if (inputOption !== outputOption) {
-      let temp = outputOption;
-      outputOption = inputOption;
-      inputOption = temp;
-    } else {
+    if (inputOption === outputOption) {
       outputCurrency.classList.add("redBorder");
       outputCurrency.focus();
       inputCurrency.classList.add("redBorder");
       inputCurrency.focus();
+      inputCurrencyError.classList.add("warning");
+    } else {
+      let temp = outputOption;
+      outputCurrency.value = inputOption;
+      inputCurrency.value = temp;
     }
     if (outputValue.trim() !== "") {
-      temp = inputValue;
-      inputValue = outputValue;
-      outputValue = temp;
+      temp = inputText.value;
+      inputText.value = outputValue;
+      outputText.value = temp;
     }
   });
 };
