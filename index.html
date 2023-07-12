@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Currency Converter</title>
-		<link rel="stylesheet" href="./styles.css" />
-	</head>
-	<body>
-		<script src="./script.js"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a230101078.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Currency Converter</div>
+      <form class="form">
+        <div class="main">
+          <input type="text" name="input" id="inputText" class="selectText" />
+          <select
+            name="inputCurrency"
+            id="inputCurrency"
+            class="selectCurrency"
+          ></select>
+        </div>
+        <p id="inputValueError">Please enter an input value</p>
+        <button type="button" id="swapButton" class="btn">
+          <i class="fa-solid fa-right-left"></i>
+        </button>
+        <div class="main">
+          <input
+            type="text"
+            name="output"
+            id="outputText"
+            class="selectText"
+            disabled
+          />
+
+          <select
+            name="outputCurrency"
+            id="outputCurrency"
+            class="selectCurrency"
+          ></select>
+        </div>
+        <p id="inputCurrencyError">Please select a different currency</p>
+        <button type="submit" class="btn" id="convertBtn">CONVERT</button>
+      </form>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>

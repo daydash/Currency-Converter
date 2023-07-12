@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap");
+
+:root {
+  --light-bg-color: #9db2bf;
+  --light-color: #dde6ed;
+  --dark-color: #27374d;
+  --main-color: #526d82;
+  --transition: all 300ms ease-in-out;
+}
+
+body {
+  background-color: var(--light-bg-color);
+  margin: 0;
+  color: var(--light-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
+  background: linear-gradient(var(--light-bg-color), var(--main-color));
+}
+
+.container {
+  background-color: var(--main-color);
+  padding: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 7px 10px var(--dark-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 4rem;
+  font-family: "Sacramento";
+}
+
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.selectCurrency {
+  width: 70px;
+  height: 2.8rem;
+  margin: 0.5rem;
+  border: 2px solid var(--dark-color);
+  border-radius: 0.5rem;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.selectCurrency:hover {
+  background-color: #27374d88;
+  color: #ffffff;
+  transform: scale(1.02);
+  transition: all 0.1s ease-in-out;
+}
+
+.selectText {
+  background-color: var(--light-color);
+  color: black;
+  padding: 1rem;
+  border: 2px solid var(--dark-color);
+  height: 0.5rem;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  border-radius: 0.5rem;
+}
+
+.options {
+  color: var(--light-color);
+  background: var(--dark-color);
+  cursor: pointer;
+}
+
+#swapButton {
+  padding: 0.5rem 1rem;
+  margin: 0.7rem;
+}
+#swapButton:hover {
+  transform: scale(1.15);
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid var(--light-color);
+  color: var(--light-color);
+  padding: 0.7rem 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--light-color);
+  color: var(--main-color);
+  transform: scale(1.08);
+  transition: all 0.1s ease-in-out;
+}
+
+.sameCurrencyErrorBtn {
+  border: 2px solid red;
+  color: #000000;
+  background-color: var(--light-color);
+}
+.sameCurrencyErrorBtn:hover {
+  border: 2px solid red;
+  color: #000000;
+}
+
+.redBorder {
+  border: 2px solid red;
+}
+
+input:focus {
+  outline: none;
+}
+select:focus {
+  outline: none;
+}
+
+.warning {
+  margin: 10px;
+  padding: 0;
+  color: yellow;
+  display: inline;
+}
+
+p {
+  display: none;
+}
