@@ -1,4 +1,4 @@
-import data from "./currencyTesting.js";
+// import data from "./currencyTesting.js";
 
 const inputCurrency = document.getElementById("inputCurrency");
 const outputCurrency = document.getElementById("outputCurrency");
@@ -11,10 +11,10 @@ const inputValueError = document.getElementById("inputValueError");
 const inputCurrencyError = document.getElementById("inputCurrencyError");
 
 const getData = async () => {
-  // const response = await fetch(
-  //   "https://api.freecurrencyapi.com/v1/latest?apikey=n9le9NlNoevcE4LjQrtxCRw9IFddoqVzGzyH0cV7"
-  // );
-  // const data = await response.json();
+  const response = await fetch(
+    "https://api.freecurrencyapi.com/v1/latest?apikey=n9le9NlNoevcE4LjQrtxCRw9IFddoqVzGzyH0cV7"
+  );
+  const data = await response.json();
   const currencyData = await data.data;
 
   const options = [];
@@ -22,10 +22,13 @@ const getData = async () => {
     options.push(key);
   });
 
-  // Object.entries(currencyData).forEach((entry) => {
-  // 	const [key] = entry;
-  // 	options.push(key);
-  // });
+  //another way to push values into options[] array
+  /*
+  Object.entries(currencyData).forEach((entry) => {
+  	const [key] = entry;
+  	options.push(key);
+  });
+  */
 
   options.map((key) => {
     const optionsList = document.createElement("option");
@@ -42,40 +45,56 @@ const getData = async () => {
     outputCurrency.appendChild(optionsList);
   });
 
-  console.log("test");
   // Restricts input for the given textbox to the given inputFilter.
-  function setInputFilter(textbox, inputFilter) {
-    [
-      "input",
-      "keydown",
-      "keyup",
-      "mousedown",
-      "mouseup",
-      "select",
-      "contextmenu",
-      "drop",
-    ].forEach((event) => {
-      textbox.addEventListener(event, function () {
-        if (inputFilter(this.value)) {
-          this.oldValue = this.value;
-          this.oldSelectionStart = this.selectionStart;
-          this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.value = this.oldValue;
-          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        }
-      });
-    });
-  }
+  // function setInputFilter(textbox, inputFilter) {
+  //   [
+  //     "input",
+  //     "keydown",
+  //     "keyup",
+  //     "mousedown",
+  //     "mouseup",
+  //     "select",
+  //     "contextmenu",
+  //     "drop",
+  //   ].forEach((event) => {
+  //     console.log("after for each");
+  //     textbox.addEventListener(event, function () {
+  //       console.log("after eventlistener");
+  //       if (inputFilter(this.value)) {
+  //         this.oldValue = this.value;
+  //         this.oldSelectionStart = this.selectionStart;
+  //         this.oldSelectionEnd = this.selectionEnd;
+  //       } else if (this.hasOwnProperty("oldValue")) {
+  //         this.value = this.oldValue;
+  //         this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+  //       }
+  //     });
+  //   });
+  // }
 
-  setInputFilter(inputText, (value) => {
-    console.log("I am");
+  // setInputFilter(inputText, (value) => {
+  //   return /^\d*\.?\d*$/.test(value);
+  // });
+
+  const inputFilter = (value) => {
     return /^\d*\.?\d*$/.test(value);
-  });
+  };
 
-  console.log(setInputFilter);
+  inputText.addEventListener("input", (e) => {
+    if (inputFilter(e.target.value)) {
+      e.target.oldValue = e.target.value;
+      e.target.oldSelectionStart = e.target.selectionStart;
+      e.target.oldSelectionEnd = e.target.selectionEnd;
+    } else if (e.target.hasOwnProperty("oldValue")) {
+      e.target.value = e.target.oldValue;
+      e.target.setSelectionRange(
+        e.target.oldSelectionStart,
+        e.target.oldSelectionEnd
+      );
+    } else {
+      e.target.value = "";
+    }
 
-  inputText.addEventListener("input", () => {
     inputText.classList.remove("redBorder");
     inputValueError.classList.remove("warning");
   });
