@@ -1,4 +1,4 @@
-import data from "./currencyTesting.js";
+// import data from "./currencyTesting.js";
 
 const inputCurrency = document.getElementById("inputCurrency");
 const outputCurrency = document.getElementById("outputCurrency");
@@ -11,10 +11,10 @@ const inputValueError = document.getElementById("inputValueError");
 const inputCurrencyError = document.getElementById("inputCurrencyError");
 
 const getData = async () => {
-  // const response = await fetch(
-  //   "https://api.freecurrencyapi.com/v1/latest?apikey=n9le9NlNoevcE4LjQrtxCRw9IFddoqVzGzyH0cV7"
-  // );
-  // const data = await response.json();
+  const response = await fetch(
+    "https://api.freecurrencyapi.com/v1/latest?apikey=n9le9NlNoevcE4LjQrtxCRw9IFddoqVzGzyH0cV7"
+  );
+  const data = await response.json();
   const currencyData = await data.data;
 
   const options = [];
@@ -22,10 +22,13 @@ const getData = async () => {
     options.push(key);
   });
 
-  // Object.entries(currencyData).forEach((entry) => {
-  // 	const [key] = entry;
-  // 	options.push(key);
-  // });
+  //another way to push values into options[] array
+  /*
+  Object.entries(currencyData).forEach((entry) => {
+  	const [key] = entry;
+  	options.push(key);
+  });
+  */
 
   options.map((key) => {
     const optionsList = document.createElement("option");
